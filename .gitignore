@@ -1,0 +1,10 @@
+# ignore env
+*.env
+.idea
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+

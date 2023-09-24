@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/styles/normalize.css">
+    <link rel="stylesheet" href="./assets/styles/nouislider.css">
+    <link rel="stylesheet" href="./assets/styles/layout.css">
+    <title>Список пользователей</title>
+</head>
+<body>
+    <section class="filter">
+        <div class="container container__filter">
+            <label class="filter-label">Выберите диапазон возраста:</label>
+            <div id="age-slider" class="filter-slider"></div>
+            <div class="range-labels">
+                <span class="min-age">0</span> - <span class="max-age">100</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="user-cards">
+        <div class="container container__cards">
+            <!-- вставка карточек пользователей -->
+        </div>
+    </section>
+
+    <script src="./assets/js/nouislider.js"></script>
+    <script src="./assets/js/index.js"></script>
+</body>
+</html>
