@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-
 html {
     height: 100%;
 }
@@ -13,10 +11,12 @@ body {
     height: 100%;
 }
 
+/* Стили для заголовка */
 .page-title {
     color: #333;
 }
 
+/* Стили для секции фильтра */
 .filter {
     margin-top: 20px;
 }
@@ -25,26 +25,46 @@ body {
     margin-right: 10px;
 }
 
-.filter-slider {
-    width: 40%;
-    margin-right: 10px;
-}
-
-.range-controls {
+/* Стили для ползунка */
+.filter-rangeSlider {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 10px;
+    width: inherit;
 }
 
-.control-label {
-    margin-right: 5px;
-    font-weight: bold;
+input[type="range"] {
+    width: 40%;
+    max-width: 300px;
+    -webkit-appearance: none;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    height: 18px;
+    position: relative;
+    background: rgba(197, 191, 158, 0.41);
+    margin: 10px 0;
 }
 
-.range-labels {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 5px;
+input[type="range"]:focus {
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 18px;
+    background: rgba(197, 191, 158, 0.41);
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background-color: #23282e;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .min-age,
@@ -52,6 +72,7 @@ body {
     font-weight: bold;
 }
 
+/* Стили для контейнера */
 .container {
     width: 100%;
     max-width: 1200px;
@@ -59,6 +80,7 @@ body {
     margin: 0 auto;
 }
 
+/* Стили для контейнера фильтра */
 .container__filter {
     display: flex;
     flex-direction: column;
@@ -66,10 +88,11 @@ body {
     padding: 15px 0;
 }
 
+/* Стили для контейнера карточек пользователей */
 .container__cards {
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(auto-fill, 240px); /* автоматом заполняем на всю ширину карточками */
+    grid-template-columns: repeat(auto-fill, 240px);
     justify-content: center;
     justify-items: center;
     margin: 0 auto;
@@ -78,6 +101,7 @@ body {
     padding-bottom: 50px;
 }
 
+/* Стили для карточки пользователя */
 .user-card {
     border: 1px solid #ccc;
     padding: 10px;
@@ -107,32 +131,9 @@ body {
     color: #007BFF;
     text-decoration: none;
     cursor: pointer;
-    transition: color 0.3s ease-in-out; /* плавное изменение цвета при наведении */
+    transition: color 0.3s ease-in-out;
 }
 
 .user-card__email:hover {
     color: #0056b3;
-}
-
-/* Стили для ползунка */
-.noUi-connect {
-    background: rgba(197, 191, 158, 0.41);
-}
-
-.noUi-target {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.noUi-handle {
-    background-color: #23282e;
-    width: 34px;
-    height: 32px;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.noUi-handle:hover {
-    opacity: 0.6;
 }

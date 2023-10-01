@@ -4,28 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/styles/normalize.css">
-    <link rel="stylesheet" href="./assets/styles/nouislider.css">
     <link rel="stylesheet" href="./assets/styles/layout.css">
     <title>Список пользователей</title>
 </head>
 <body>
-    <section class="filter">
-        <div class="container container__filter">
-            <label class="filter-label">Выберите диапазон возраста:</label>
-            <div id="age-slider" class="filter-slider"></div>
-            <div class="range-labels">
+<section class="filter">
+    <div class="container container__filter">
+        <label class="filter-label">Выберите диапазон возраста:</label>
+        <div class="filter-rangeSlider">
+            <input type="range" id="min-age-slider" min="0" max="100" value="0" step="1">
+            <input type="range" id="max-age-slider" min="0" max="100" value="100" step="1">
+            <div class="rangeSlider-info">
                 <span class="min-age">0</span> - <span class="max-age">100</span>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="user-cards">
-        <div class="container container__cards">
-            <!-- вставка карточек пользователей -->
-        </div>
-    </section>
+<section class="user-cards">
+    <div class="container container__cards">
+        <!-- вставка карточек пользователей -->
+    </div>
+</section>
 
-    <script src="./assets/js/nouislider.js"></script>
-    <script src="./assets/js/index.js"></script>
+<script src="./assets/js/index.js"></script>
 </body>
 </html>

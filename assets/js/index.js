@@ -1,7 +1,7 @@
 const users = [];
 
 // вытаскиваем данные из API (получаем имя/фамилию/email/возраст)
-function getUserData() {
+const getUserData = () => {
     fetch('https://randomuser.me/api/?results=50')
         .then(response => response.json())
         .then(data => {
@@ -27,7 +27,7 @@ function getUserData() {
 }
 
 // отрисовываем карточку пользователя
-function displayUserCards(usersToDisplay) {
+const displayUserCards = (usersToDisplay) => {
     const userCardsElement = document.querySelector(".container__cards");
     userCardsElement.innerHTML = ""; // очищаем содержимое перед обновлением
 
@@ -38,7 +38,7 @@ function displayUserCards(usersToDisplay) {
 }
 
 // создаем карточку пользователя
-function createUserCard(user) {
+const createUserCard = (user) => {
     const userCard = document.createElement("div");
     userCard.classList.add("user-card");
 
@@ -57,7 +57,7 @@ function createUserCard(user) {
 }
 
 // создаем элементы пользовательских данных
-function createPersonInfo(classNames, element, text) {
+const createPersonInfo = (classNames, element, text) => {
     const userPersonInfo = document.createElement(element);
 
     classNames.forEach((className) => {
@@ -69,34 +69,37 @@ function createPersonInfo(classNames, element, text) {
     return userPersonInfo;
 }
 
-// функция для настройки ползунка (документация https://refreshless.com/nouislider/)
+// функция для настройки двух ползунков
 function setupAgeSlider() {
-    const ageRange = [0, 100]; // начальные значения диапазона
-    const ageRangeElement = document.querySelector("#age-slider");
-
-    noUiSlider.create(ageRangeElement, {
-        start: ageRange, // установка начальных значений
-        connect: true, // связать две точки
-        range: {
-            'min': 0,
-            'max': 100
-        }
-    });
-
+    const minAgeSlider = document.querySelector("#min-age-slider");
+    const maxAgeSlider = document.querySelector("#max-age-slider");
     const minAgeDisplay = document.querySelector(".min-age");
     const maxAgeDisplay = document.querySelector(".max-age");
 
-    // обработчик изменения ползунка
-    ageRangeElement.noUiSlider.on("update", function (values) {
-        const minAge = Math.round(values[0]);
-        const maxAge = Math.round(values[1]);
-        minAgeDisplay.textContent = minAge;
-        maxAgeDisplay.textContent = maxAge;
+    minAgeSlider.addEventListener("input", updateAgeRange);
+    maxAgeSlider.addEventListener("input", updateAgeRange);
+
+    function updateAgeRange() {
+        const minAgeValue = parseInt(minAgeSlider.value);
+        const maxAgeValue = parseInt(maxAgeSlider.value);
+
+        // проверка, что левый ползунок не превышал правый
+        if (minAgeValue >= maxAgeValue) {
+            minAgeSlider.value = maxAgeValue;
+        }
+
+        // проверка, что правый ползунок не был меньше левого
+        if (maxAgeValue <= minAgeValue) {
+            maxAgeSlider.value = minAgeValue;
+        }
+
+        minAgeDisplay.textContent = minAgeValue;
+        maxAgeDisplay.textContent = maxAgeValue;
 
         // фильтруем пользователей по диапазону возраста
-        const filteredUsers = users.filter(user => user.age >= minAge && user.age <= maxAge);
+        const filteredUsers = users.filter(user => user.age >= minAgeValue && user.age <= maxAgeValue);
         displayUserCards(filteredUsers);
-    });
+    }
 }
 
 getUserData();
